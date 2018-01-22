@@ -1,29 +1,46 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>React Practice</title>
-  </head>
 
-  <body>
-    <div id="app"></div>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.0/umd/react.development.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
-     <script type="text/babel">
-        class HelloMessage extends React.Component {
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>React Practice</title>
+    </head>
+    <body>
+
+      <div id="app"></div>
+
+      <script src="https://fb.me/react-15.0.0.js"></script>
+      <script src="https://fb.me/react-dom-15.0.0.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+      <script type="text/babel">
+
+        class Simple extends React.Component {
+
+          constructor(props){
+            super(props);
+            this.state = {
+              number: 1
+            }
+          }
+
           render() {
             return (
               <div>
-                <h1>Hello {this.props.name}</h1>
+              <h1>Todays Date: {this.props.date.toLocalDateString()}</h1>
+              <h2>It is currently month {this.state.number} of 2018.</h2>
               </div>
             );
           }
         }
 
+        const info = {
+          date: new Date(),
+        }
+
         ReactDOM.render(
-          <HelloMessage name="Ashley" />,
-          mountNode
+          <Simple
+            date={info.date}/>,document.getElementById('app')
         );
-     </script>
-   </body>
+        </script>
+      </body>
   </html>
